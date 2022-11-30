@@ -1,26 +1,55 @@
-const textDOM = document.getElementById("text")
-const addbtnDOM = document.getElementById("addbtn")
-const clearbtnDOM = document.getElementById("clrbtn")
+//*****************                          TODO LIST                                      ********************/
+
+let textDOM = document.getElementById("text")
+let addbtnDOM = document.getElementById("addbtn")
+let clearbtnDOM = document.getElementById("clrbtn")
+let todoListDOM = document.getElementById("todoList")
+let tododivDOM = document.getElementById("tododiv")
+let text = document.createElement("li")
 
 addbtnDOM.addEventListener("click", addtext)
 clearbtnDOM.addEventListener("click", cleartext)
 
-function addtext () {
-    const tododivDOM = document.getElementById("tododiv")
+
+function addtext (e) {
+    let tododivDOM = document.getElementById("tododiv")
     let text = document.createElement("li")
+    let aDOM = document.querySelector("a")
+    e.preventDefault();
     
-    event.preventDefault();
-    
+
     text.classList.add("list-group-item", "border", "p-2")
-    text.innerHTML = `<input class="form-check-input me-1 ms-2" type="checkbox" value="" id="secondCheckbox">
-    <label class="form-check-label" for="secondCheckbox">${textDOM.value}</label>
-    <button type="button" class="btn-close  float-end me-2" aria-label="Close"></button>`
+    text.innerHTML = `<li class="list-group-item">
+        <label class="form-check-label ms-4" for="firstCheckbox"><a href="#">${textDOM.value}</a></label>
+    </li>
+    `
 
     textDOM.value = ""
+
+    aDOM.addEventListener("click", function(){
+        if (this.style.textDecoration == "none"){
+            this.style.textDecoration = "line-through"
+        }
+        else {
+            this.style.textDecoration = "none"
+        }
+    })
+
 
     tododivDOM.prepend(text)
+    return
 }
 
-function cleartext() {
-    textDOM.value = ""
+
+function cleartext (e){
+    e.preventDefault()
+    tododivDOM.innerHTML = `                <ul class="list-group" id="todolist">
+    <li class="list-group-item">
+        <label class="form-check-label ms-3" for="firstCheckbox"><a href="#">Yazdığım görevler burada listelernir</a></label>
+    </li>
+</ul>`
 }
+//********** if click a, text decoration be line-through ************/
+
+
+
