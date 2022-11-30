@@ -18,7 +18,7 @@ function addtext (e) {
     e.preventDefault();
     
 
-    text.classList.add("list-group-item", "border", "p-2")
+    text.classList.add("list-group-item", "border", "rounded", "p-2", "bg-white", "shadow-lg")
     text.innerHTML = `<li class="list-group-item">
         <label class="form-check-label ms-4" for="firstCheckbox"><a href="#">${textDOM.value}</a></label>
     </li>
@@ -45,11 +45,7 @@ function cleartext (e){
     e.preventDefault()
     tododivDOM.innerHTML = `                <ul class="list-group" id="todolist">
     <li class="list-group-item">
-        <label class="form-check-label ms-3" for="firstCheckbox"><a href="#">Yazdığım görevler burada listelernir</a></label>
+        <label class="form-check-label ms-3" for="firstCheckbox"><a href="#">Yazdığım görevler burada listelenir</a></label>
     </li>
 </ul>`
 }
-//********** if click a, text decoration be line-through ************/
-
-
-
