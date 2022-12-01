@@ -6,6 +6,9 @@ let clearbtnDOM = document.getElementById("clrbtn")
 let todoListDOM = document.getElementById("todoList")
 let tododivDOM = document.getElementById("tododiv")
 let text = document.createElement("li")
+let alertDOM = document.getElementById("alert")
+let successDOM = document.getElementById("success")
+let aDOM = document.querySelector("a")
 
 addbtnDOM.addEventListener("click", addtext)
 clearbtnDOM.addEventListener("click", cleartext)
@@ -17,26 +20,40 @@ function addtext (e) {
     let aDOM = document.querySelector("a")
     e.preventDefault();
     
+    if(textDOM.value.length < 1){
+        alertDOM.classList.remove("d-none")
 
-    text.classList.add("list-group-item", "border", "rounded", "p-2", "bg-white", "shadow-lg")
-    text.innerHTML = `<li class="list-group-item">
+        setTimeout(function(){alertDOM.classList.add("d-none")}, 5000)
+    }
+    else {
+        text.classList.add("list-group-item", "border", "rounded", "p-2", "bg-white", "shadow-lg")
+        text.innerHTML = `<li class="list-group-item">
         <label class="form-check-label ms-4" for="firstCheckbox"><a href="#">${textDOM.value}</a></label>
-    </li>
-    `
+        </li>
+        `
 
-    textDOM.value = ""
+        textDOM.value = ""
 
-    aDOM.addEventListener("click", function(){
+        aDOM.addEventListener("click", function(){
         if (this.style.textDecoration == "none"){
             this.style.textDecoration = "line-through"
         }
         else {
             this.style.textDecoration = "none"
         }
-    })
+        })
 
 
-    tododivDOM.prepend(text)
+        tododivDOM.prepend(text)
+
+        successDOM.classList.remove("d-none")
+
+        setTimeout(function(){successDOM.classList.add("d-none")}, 3000)
+
+    }
+
+
+    
     return
 }
 
@@ -49,3 +66,8 @@ function cleartext (e){
     </li>
 </ul>`
 }
+
+let alertclsbtnDOM = document.getElementById("alertclsbtn")
+alertclsbtnDOM.addEventListener("click", function(){
+    alertDOM.classList.add("d-none")
+})
