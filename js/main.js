@@ -13,7 +13,6 @@ let aDOM = document.querySelector("a")
 addbtnDOM.addEventListener("click", addtext)
 clearbtnDOM.addEventListener("click", cleartext)
 
-
 function addtext (e) {
     let tododivDOM = document.getElementById("tododiv")
     let text = document.createElement("li")
